@@ -1,0 +1,115 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  fetch_data
+
+  Sample SAM Template for fetch_data
+
+Globals:
+  Function:
+    Timeout: 20
+    MemorySize: 128
+
+Parameters:
+  Env:
+    Type: String
+  RapidApiKey:
+    Type: String
+
+Resources:
+  SeasonMetaDynamoDBTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName:
+        Fn::Sub: "bayesball-seasons-meta-${Env}"
+      KeySchema:
+        - AttributeName: league_id
+          KeyType: HASH
+        - AttributeName: season_year
+          KeyType: RANGE
+      AttributeDefinitions:
+        - AttributeName: league_id
+          AttributeType: N
+        - AttributeName: season_year
+          AttributeType: N
+        - AttributeName: posteriors_need_to_update
+          AttributeType: N
+        - AttributeName: last_updated_fixtures
+          AttributeType: S
+        - AttributeName: data_need_to_update
+          AttributeType: N
+      BillingMode: PAY_PER_REQUEST  # Use on-demand billing mode
+      GlobalSecondaryIndexes:
+        - IndexName: UpToDateIndex
+          KeySchema:
+            - AttributeName: posteriors_need_to_update
+              KeyType: HASH
+          Projection:
+            ProjectionType: KEYS_ONLY
+        - IndexName: LastUpdatedIndex
+          KeySchema:
+            - AttributeName: data_need_to_update
+              KeyType: HASH
+            - AttributeName: last_updated_fixtures
+              KeyType: RANGE
+          Projection:
+            ProjectionType: INCLUDE
+            NonKeyAttributes:
+                - last_updated_teams
+                - start_date
+                - end_date
+                - last_updated_posteriors
+
+                  # FetchFixturesAndTeamsFunction:
+                  #   Type: AWS::Serverless::Function
+                  #   Properties:
+                  #     FunctionName: fetch-teams-and-seasons-lambda
+                  #     CodeUri: fetch_teams_and_seasons/
+                  #     Handler: app.lambda_handler
+                  #     Runtime: python3.11
+                  #     Timeout: 300
+                  #     MemorySize: 128
+                  #     Architectures:
+                  #       - x86_64
+                  #     Policies:
+                  #       - DynamoDBCrudPolicy:
+                  #           TableName: !Ref SeasonMetaDynamoDBTable
+                  #     Environment:
+                  #       Variables:
+                  #         RAPID_API_KEY: !Sub "${RapidApiKey}"
+                  #         SEASONS_META_TABLE: !Ref SeasonMetaDynamoDBTable
+                  #         MAX_UPDATES: 10
+                  #         SLEEP_TIME_BETWEEN_CALLS_SECONDS: 5
+                  #     Events:
+                  #       InvocationLevel:
+                  #         Type: Schedule
+                  #         Properties:
+                  #           Schedule: cron(0 */8 * * ? *) # Runs every 8 hours
+
+  FetchSeasonsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName:
+        Fn::Sub: "fetch-seasons-lambda-${Env}"
+      CodeUri: fetch_seasons/
+      Handler: app.lambda_handler
+      Runtime: python3.11
+      Timeout: 120
+      MemorySize: 256
+      Architectures:
+        - x86_64
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref SeasonMetaDynamoDBTable
+      Environment:
+        Variables:
+          RAPID_API_KEY: !Sub "${RapidApiKey}"
+          SEASONS_META_TABLE: !Ref SeasonMetaDynamoDBTable
+      Events:
+        InvocationLevel:
+          Type: Schedule
+          Properties:
+            Schedule: cron(15 0 ? * 1 *) #every monday at midnight
+
+
+
