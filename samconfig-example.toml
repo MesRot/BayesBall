@@ -3,7 +3,7 @@ version = 0.1
 [dev.deploy]
 [dev.deploy.parameters]
 stack_name = "fetch-bayesball-data-dev"
-s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1101o57bopc2l"
+s3_bucket = <create-your-own-bucket>
 s3_prefix = "fetch-bayesball-data-dev"
 region = "eu-west-1"
 confirm_changeset = true
@@ -16,7 +16,7 @@ parameter_overrides = "RapidApiKey=your-api-key-here Env=dev"
 [prod.deploy]
 [prod.deploy.parameters]
 stack_name = "fetch-bayesball-data-prod"
-s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1101o57bopc2l"
+s3_bucket = <create-your-own-bucket>
 s3_prefix = "fetch-bayesball-data-prod"
 region = "eu-west-1"
 confirm_changeset = true
