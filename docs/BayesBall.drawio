@@ -1,0 +1,128 @@
+<mxfile host="app.diagrams.net" modified="2023-12-31T09:07:45.821Z" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0" etag="9IJjXksQtWQLR20Gewvp" version="22.1.16" type="device">
+  <diagram name="Page-1" id="PGij4X9HcLy79GjeQRqK">
+    <mxGraphModel dx="1434" dy="795" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="b-n1iJBG92tkE8yt_qI0-2" value="Amazon DynamoDB" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.dynamodb;" parent="1" vertex="1">
+          <mxGeometry x="400" y="390" width="80" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="b-n1iJBG92tkE8yt_qI0-4" value="AWS Lambda" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.lambda;" parent="1" vertex="1">
+          <mxGeometry x="140" y="580.0000000000001" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="b-n1iJBG92tkE8yt_qI0-5" value="&lt;div&gt;AWS Lambda&lt;/div&gt;" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.lambda;" parent="1" vertex="1">
+          <mxGeometry x="130" y="390" width="80" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="b-n1iJBG92tkE8yt_qI0-6" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="b-n1iJBG92tkE8yt_qI0-5" target="b-n1iJBG92tkE8yt_qI0-2" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="730" as="sourcePoint" />
+            <mxPoint x="440" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b-n1iJBG92tkE8yt_qI0-7" value="&lt;div&gt;1. Import meta information&lt;/div&gt;&lt;div&gt;from all&lt;/div&gt;&lt;div&gt;leagues and season&lt;br&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="b-n1iJBG92tkE8yt_qI0-6" vertex="1" connectable="0">
+          <mxGeometry x="-0.1789" y="3" relative="1" as="geometry">
+            <mxPoint x="12" y="3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b-n1iJBG92tkE8yt_qI0-9" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" parent="1" source="b-n1iJBG92tkE8yt_qI0-4" target="b-n1iJBG92tkE8yt_qI0-2" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="730" as="sourcePoint" />
+            <mxPoint x="440" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b-n1iJBG92tkE8yt_qI0-10" value="&lt;div&gt;2.Import data from&lt;/div&gt;&lt;div&gt;leagues which have&lt;/div&gt;&lt;div&gt;new games.&lt;br&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="b-n1iJBG92tkE8yt_qI0-9" vertex="1" connectable="0">
+          <mxGeometry x="-0.0863" y="-5" relative="1" as="geometry">
+            <mxPoint x="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b-n1iJBG92tkE8yt_qI0-11" value="Amazon ECS" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.ecs;" parent="1" vertex="1">
+          <mxGeometry x="720" y="580" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="b-n1iJBG92tkE8yt_qI0-14" value="AWS Lambda" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.lambda;" parent="1" vertex="1">
+          <mxGeometry x="400" y="580" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="b-n1iJBG92tkE8yt_qI0-15" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" parent="1" source="b-n1iJBG92tkE8yt_qI0-2" target="b-n1iJBG92tkE8yt_qI0-14" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="730" as="sourcePoint" />
+            <mxPoint x="440" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b-n1iJBG92tkE8yt_qI0-16" value="&lt;div&gt;3. Check if we have&lt;/div&gt;&lt;div&gt;unprocessed games&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="b-n1iJBG92tkE8yt_qI0-15" vertex="1" connectable="0">
+          <mxGeometry x="0.1273" y="1" relative="1" as="geometry">
+            <mxPoint x="-1" y="-12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b-n1iJBG92tkE8yt_qI0-17" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="b-n1iJBG92tkE8yt_qI0-14" target="b-n1iJBG92tkE8yt_qI0-11" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="610" y="660" as="sourcePoint" />
+            <mxPoint x="440" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b-n1iJBG92tkE8yt_qI0-18" value="&lt;div&gt;4. Start&amp;nbsp; model container&lt;br&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="b-n1iJBG92tkE8yt_qI0-17" vertex="1" connectable="0">
+          <mxGeometry x="-0.0772" relative="1" as="geometry">
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b-n1iJBG92tkE8yt_qI0-19" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" parent="1" source="b-n1iJBG92tkE8yt_qI0-11" target="b-n1iJBG92tkE8yt_qI0-2" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="730" as="sourcePoint" />
+            <mxPoint x="440" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b-n1iJBG92tkE8yt_qI0-20" value="&lt;div&gt;5. Generate new &lt;br&gt;&lt;/div&gt;&lt;div&gt;posteriors for teams&lt;br&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="b-n1iJBG92tkE8yt_qI0-19" vertex="1" connectable="0">
+          <mxGeometry x="0.3365" y="1" relative="1" as="geometry">
+            <mxPoint x="34" y="2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b-n1iJBG92tkE8yt_qI0-21" value="&lt;div&gt;AWS Lambda&lt;/div&gt;" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.lambda;" parent="1" vertex="1">
+          <mxGeometry x="400" y="210" width="80" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="b-n1iJBG92tkE8yt_qI0-22" value="Amazon API Gateway" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.api_gateway;" parent="1" vertex="1">
+          <mxGeometry x="400" y="30" width="80" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="b-n1iJBG92tkE8yt_qI0-24" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="b-n1iJBG92tkE8yt_qI0-2" target="b-n1iJBG92tkE8yt_qI0-21" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="390" as="sourcePoint" />
+            <mxPoint x="450" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b-n1iJBG92tkE8yt_qI0-26" value="&lt;div&gt;6.Access&amp;nbsp; to posteriors&lt;/div&gt;&lt;div&gt;and match predictions&lt;br&gt;&lt;/div&gt;&lt;div&gt;is given from API endpoint&lt;br&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="b-n1iJBG92tkE8yt_qI0-24" vertex="1" connectable="0">
+          <mxGeometry x="0.1143" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b-n1iJBG92tkE8yt_qI0-25" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="b-n1iJBG92tkE8yt_qI0-21" target="b-n1iJBG92tkE8yt_qI0-22" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="390" as="sourcePoint" />
+            <mxPoint x="450" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2oWyxQ5hYvB_LwszDErS-1" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="b-n1iJBG92tkE8yt_qI0-4" target="2oWyxQ5hYvB_LwszDErS-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="530" as="sourcePoint" />
+            <mxPoint x="370" y="770" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2oWyxQ5hYvB_LwszDErS-4" value="&lt;div&gt;Store played games&lt;/div&gt;&lt;div&gt;and teams to&lt;/div&gt;&lt;div&gt;AWS S3&lt;br&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="2oWyxQ5hYvB_LwszDErS-1">
+          <mxGeometry x="-0.2552" y="-3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2oWyxQ5hYvB_LwszDErS-2" value="Amazon S3" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.s3;" vertex="1" parent="1">
+          <mxGeometry x="400" y="770" width="80" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="2oWyxQ5hYvB_LwszDErS-3" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="b-n1iJBG92tkE8yt_qI0-11" target="2oWyxQ5hYvB_LwszDErS-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="530" as="sourcePoint" />
+            <mxPoint x="450" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2oWyxQ5hYvB_LwszDErS-5" value="&lt;div&gt;Retrieve played games&lt;/div&gt;&lt;div&gt;from the AWS S3&lt;br&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="2oWyxQ5hYvB_LwszDErS-3">
+          <mxGeometry x="-0.0395" y="4" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
