@@ -1,9 +1,7 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: >
-  fetch_data
-
-  Sample SAM Template for fetch_data
+  Stack for updating the data needed for BayesBall
 
 Globals:
   Function:
@@ -15,13 +13,16 @@ Parameters:
     Type: String
   RapidApiKey:
     Type: String
+  StackName:
+    Type: String
+    Default: bayesball
 
 Resources:
   SeasonMetaDynamoDBTable:
     Type: AWS::DynamoDB::Table
     Properties:
       TableName:
-        Fn::Sub: "bayesball-seasons-meta-${Env}"
+        Fn::Sub: "${StackName}-seasons-meta-${Env}"
       KeySchema:
         - AttributeName: league_id
           KeyType: HASH
@@ -60,38 +61,49 @@ Resources:
                 - end_date
                 - last_updated_posteriors
 
-                  # FetchFixturesAndTeamsFunction:
-                  #   Type: AWS::Serverless::Function
-                  #   Properties:
-                  #     FunctionName: fetch-teams-and-seasons-lambda
-                  #     CodeUri: fetch_teams_and_seasons/
-                  #     Handler: app.lambda_handler
-                  #     Runtime: python3.11
-                  #     Timeout: 300
-                  #     MemorySize: 128
-                  #     Architectures:
-                  #       - x86_64
-                  #     Policies:
-                  #       - DynamoDBCrudPolicy:
-                  #           TableName: !Ref SeasonMetaDynamoDBTable
-                  #     Environment:
-                  #       Variables:
-                  #         RAPID_API_KEY: !Sub "${RapidApiKey}"
-                  #         SEASONS_META_TABLE: !Ref SeasonMetaDynamoDBTable
-                  #         MAX_UPDATES: 10
-                  #         SLEEP_TIME_BETWEEN_CALLS_SECONDS: 5
-                  #     Events:
-                  #       InvocationLevel:
-                  #         Type: Schedule
-                  #         Properties:
-                  #           Schedule: cron(0 */8 * * ? *) # Runs every 8 hours
+  BayesballRawBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName:
+        Fn::Sub: "${StackName}-raw-${Env}"
+      AccessControl: Private
+
+  FetchFixturesAndTeamsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName:
+        Fn::Sub: "${StackName}-fetch-fixtures-and-teams-lambda-${Env}"
+      CodeUri: src/data_import/fetch_fixtures_and_teams/
+      Handler: app.lambda_handler
+      Runtime: python3.11
+      Timeout: 300
+      MemorySize: 128
+      Architectures:
+        - x86_64
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref SeasonMetaDynamoDBTable
+        - S3WritePolicy:
+            BucketName: !Ref BayesballRawBucket
+      Environment:
+        Variables:
+          RAPID_API_KEY: !Sub "${RapidApiKey}"
+          SEASONS_META_TABLE: !Ref SeasonMetaDynamoDBTable
+          DESTINATION_BUCKET: !Ref BayesballRawBucket
+          MAX_UPDATES: 10
+          SLEEP_TIME_BETWEEN_CALLS_SECONDS: 5
+      Events:
+        InvocationLevel:
+          Type: Schedule
+          Properties:
+            Schedule: cron(0 */8 * * ? *) # Runs every 8 hours
 
   FetchSeasonsFunction:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName:
-        Fn::Sub: "fetch-seasons-lambda-${Env}"
-      CodeUri: fetch_seasons/
+        Fn::Sub: "${StackName}-fetch-seasons-lambda-${Env}"
+      CodeUri: src/data_import/fetch_seasons/
       Handler: app.lambda_handler
       Runtime: python3.11
       Timeout: 120
