@@ -1,5 +1,8 @@
 """
-Updates leagues meta csv.
+Script for importing meta information on leagues and played seasons to DynamoDB. Imports all soccer meta information from 2019 and onwards to the database.
+If the row (league / season) already exists in the database we don't update the values.
+
+Run once a week automatically.
 """
 
 from typing import Dict, List
