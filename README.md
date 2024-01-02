@@ -1,5 +1,6 @@
 # Bayesball
-Cleaned up repository for the BayesBall project. Note: All components are not included in this public project.
+The goal of BayesBall project is to make predictions and analytics from various soccer leagues around the world. Currently the model is running on around 500 different soccer leagues around the world. 
+This is the cleaned up repository for the BayesBall project and note that all of components are not included in this public repository.
 
 ### Model:
 The model is a Bayesian model implemented in using Pymc3 inspired by https://bayesbet.everettsprojects.com/.
@@ -57,7 +58,7 @@ make build-and-deploy-<dev/prod>
 - The solution is tightly integrated to current database.
 	- It is faster to prototype when you integrate tightly to one database but changing the stack is big workload as you have to refactor quite a big portion of your codebase. The better solution is to write code around interfaces and this one major thing I would like to change (and change back to relational database).
 ##### How much does this cost?
-Database and import lambdas cost around 10 cents a month.
+Database and import lambdas cost around 10 cents a month. You can stay under the free limits of the Rapid API so you don't have to pay for API tokens.
 
 ### TODO:
 1. Get the rapid-api-key from the secretsmanager instead of hardcoding it to samconfig.
