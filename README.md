@@ -1,4 +1,4 @@
-# Bayesball
+# BayesBall
 The goal of BayesBall project is to make predictions and analytics from various soccer leagues around the world. Currently the model is running on around 500 different soccer leagues around the world. 
 This is the cleaned up repository for the BayesBall project and note that all of components are not included in this public repository.
 
