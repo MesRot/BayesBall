@@ -1,0 +1,5 @@
+pymc
+numpy
+pandas
+matplotlib
+plotly
